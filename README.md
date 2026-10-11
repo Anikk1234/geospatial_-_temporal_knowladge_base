@@ -31,6 +31,18 @@ A capstone project that turns a large, enriched **wildfire dataset** into a fast
 
 ---
 
+##  Data Source
+
+This project is built on the **US Wildfire Dataset** published on Kaggle by FireCastRL.
+
+[![Kaggle](https://img.shields.io/badge/Kaggle-US_Wildfire_Dataset-20BEFF?style=for-the-badge&logo=kaggle&logoColor=white)](https://www.kaggle.com/datasets/firecastrl/us-wildfire-dataset)
+
+ **https://www.kaggle.com/datasets/firecastrl/us-wildfire-dataset**
+
+The raw Kaggle data is enriched with Spark (season, year, and other derived fields) and saved as `wildfire_kb/enriched.parquet`. All credit for the original data goes to its authors. Please check the dataset page for its license and citation terms before reusing or redistributing it.
+
+---
+
 ##  Features
 
 | | |
@@ -56,10 +68,13 @@ cd <your-repo>
 # 2. Install dependencies
 pip install flask pyspark pandas pyarrow
 
-# 3. Build the knowledge base first (produces wildfire_kb/enriched.parquet)
+# 3. Download the dataset from Kaggle and place it where 01_spark_knowledge_base.py expects it
+#    https://www.kaggle.com/datasets/firecastrl/us-wildfire-dataset
+
+# 4. Build the knowledge base (produces wildfire_kb/enriched.parquet)
 python 01_spark_knowledge_base.py
 
-# 4. Launch the console
+# 5. Launch the console
 python run.py
 ```
 
@@ -71,7 +86,7 @@ Then open **http://localhost:5000** 🎉
 
 ```
 .
-├── 01_spark_knowledge_base.py   # Stage 1 – build & enrich the Parquet knowledge base
+├── spark-warehouse   # Stage 1 – build & enrich the Parquet knowledge base
 ├── run.py                       # Stage 3 – Flask + SparkSQL web console
 ├── wildfire_kb/
 │   └── enriched.parquet         # Generated knowledge base
@@ -185,9 +200,13 @@ Or use a standard python.org Python install, where `pip` gets ready-made wheels.
 
 Pull requests and ideas are welcome. Open an issue first to discuss big changes.
 
-##  License
+##  Acknowledgements
 
-Released under the [MIT License](LICENSE).
+- Dataset: [US Wildfire Dataset](https://www.kaggle.com/datasets/firecastrl/us-wildfire-dataset) by FireCastRL on Kaggle
+
+## 📄 License
+
+Released under the [MIT License](LICENSE) (applies to the code, not the dataset).
 
 ---
 
